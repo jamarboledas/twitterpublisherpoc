@@ -8,6 +8,10 @@ In order to build the project just execute the following command.
 
 ### Environment variables
 
+#### Symfony framework
+APP_ENV=dev
+APP_SECRET=app_secret_hash
+
 #### Database set up.
 MYSQL_ROOT_PASSWORD: Root password.\
 MYSQL_DATABASE: Mysql database name.\
