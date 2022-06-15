@@ -25,6 +25,8 @@ services:
       - ./app:/var/www/twitterbot
     depends_on:
       - database
+    env_file:
+      - ./app/.env      
 
   nginx:
     container_name: nginx
@@ -37,3 +39,5 @@ services:
     depends_on:
       - php
       - database
+    env_file:
+      - ./app/.env      
