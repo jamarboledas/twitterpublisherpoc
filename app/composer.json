@@ -9,7 +9,7 @@
         "ext-iconv": "*",
         "abraham/twitteroauth": "^4.0",
         "symfony/console": "*",
-        "symfony/dotenv": "*",
+        "symfony/dotenv": "6.0.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "*",
         "symfony/runtime": "*",
