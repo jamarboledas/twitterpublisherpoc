@@ -6,13 +6,11 @@ use App\Infrastructure\TwitterClient;
 
 final class HelloWorldTest extends KernelTestCase
 {
-    public function testFetch(): void
+    public function testFetchTenPostsWorksProperly(): void
     {
-        $this->assertTrue(true);
         $twitterClient = new TwitterClient();
         $fetchPost = new FetchPosts($twitterClient);
         $tweets = $fetchPost->fetch('hello', 10);
-        dump($tweets);
         $this->assertCount(10, $tweets);
     }
 }
