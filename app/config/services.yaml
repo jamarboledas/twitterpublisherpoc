@@ -4,6 +4,10 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    twitter.consumer.key: '%env(string:CONSUMER_KEY)%'
+    twitter.consumer.secret: '%env(string:CONSUMER_SECRET)%'
+    twitter.access.token: '%env(string:ACCESS_TOKEN)%'
+    twitter.token.secret: '%env(string:ACCESS_TOKEN_SECRET)%'
 
 services:
     # default configuration for services in *this* file
@@ -22,3 +26,17 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    twitter_oauth_client:
+        class: Abraham\TwitterOAuth\TwitterOAuth
+        arguments:
+            - '%twitter.consumer.key%'
+            - '%twitter.consumer.secret%'
+            - '%twitter.access.token%'
+            - '%twitter.token.secret%'                                    
+    
+    App\Infrastructure\TwitterClient:
+        arguments: ['@twitter_oauth_client']
+
+    App\Application\FetchPosts:
+        arguments: [App\Infrastructure\TwitterClient]

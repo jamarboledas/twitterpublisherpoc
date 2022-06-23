@@ -9,14 +9,9 @@ class TwitterClient implements FetchInterface
 {
     private $connection;
 
-    public function __construct() 
+    public function __construct(TwitterOAuth $twitterOAuth) 
     {
-        $this->connection = new TwitterOAuth(
-            getenv('CONSUMER_KEY'), 
-            getenv('CONSUMER_SECRET'),
-            getenv('ACCESS_TOKEN'),
-            getenv('ACCESS_TOKEN_SECRET')
-        );
+        $this->connection = $twitterOAuth;
     }
 
     /**
@@ -26,8 +21,8 @@ class TwitterClient implements FetchInterface
      */
     public function fetch(string $text, int $count)
     {
-        $tweets = $this->connection->get("search/tweets", ["q" => $text, "count" => $count]);
-        
+        $tweets = $this->connection->get("search/tweets", ["q" => $text, "count" => $count]);        
+     
         if ($this->errorHandling() === false) {
             return false;
         }

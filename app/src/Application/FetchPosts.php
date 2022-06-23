@@ -3,7 +3,6 @@
 namespace App\Application;
 use App\Domain\FetchInterface;
 use App\Domain\PostDTO;
-use stdClass;
 
 class FetchPosts
 {
@@ -17,14 +16,24 @@ class FetchPosts
     /**
      * @param string $filter
      * @param int $count
+     * @return array|bool
      */
     public function fetch(string $filter, int $count) 
     {
         $posts = $this->fetchClient->fetch($filter, $count);
+
+        if ($posts === false) {
+            return false;
+        }
+
         return $this->transform($posts);
     }
 
-    private function transform(stdClass $posts) 
+    /**
+     * @param object $posts
+     * @return array
+     */
+    private function transform(object $posts) : array
     {
         $formattedPosts = [];
         
