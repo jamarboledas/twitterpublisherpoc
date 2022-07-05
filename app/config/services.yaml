@@ -38,5 +38,5 @@ services:
     App\Infrastructure\TwitterClient:
         arguments: ['@twitter_oauth_client']
 
-    App\Application\FetchPosts:
+    App\Application\Fetch:
         arguments: [App\Infrastructure\TwitterClient]

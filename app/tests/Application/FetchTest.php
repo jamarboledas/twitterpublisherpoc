@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 use Abraham\TwitterOAuth\TwitterOAuth;
-use App\Application\FetchPosts;
+use App\Application\Fetch;
 use App\Infrastructure\TwitterClient;
 use PHPUnit\Framework\TestCase as KernelTestCase;
 
@@ -20,7 +20,7 @@ final class FetchPostsTest extends KernelTestCase
         );
 
         $fetchInterface = new TwitterClient($twitterOauth);
-        $fetchPost = new FetchPosts($fetchInterface);
+        $fetchPost = new Fetch($fetchInterface);
         $tweets = $fetchPost->fetch($filter, $maxElements);
         $this->assertLessThanOrEqual($maxElements, count($tweets));
     }
@@ -38,7 +38,7 @@ final class FetchPostsTest extends KernelTestCase
         );
 
         $fetchInterface = new TwitterClient($twitterOauth);
-        $fetchPost = new FetchPosts($fetchInterface);
+        $fetchPost = new Fetch($fetchInterface);
         $tweets = $fetchPost->fetch($filter, 0);
         $this->assertLessThanOrEqual(15, count($tweets));
     }
@@ -56,7 +56,7 @@ final class FetchPostsTest extends KernelTestCase
         );
 
         $fetchInterface = new TwitterClient($twitterOauth);
-        $fetchPost = new FetchPosts($fetchInterface);
+        $fetchPost = new Fetch($fetchInterface);
         $tweets = $fetchPost->fetch($filter, $maxElements);
         $this->assertFalse($tweets);
     }
