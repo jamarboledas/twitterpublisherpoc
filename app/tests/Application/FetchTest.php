@@ -5,7 +5,7 @@ use App\Application\Fetch;
 use App\Infrastructure\TwitterClient;
 use PHPUnit\Framework\TestCase as KernelTestCase;
 
-final class FetchPostsTest extends KernelTestCase
+final class FetchTest extends KernelTestCase
 {
     /**
      * @dataProvider dataProvider
