@@ -40,3 +40,6 @@ services:
 
     App\Application\Fetch:
         arguments: [App\Infrastructure\TwitterClient]
+
+    App\Application\Post:
+        arguments: [App\Infrastructure\TwitterClient]       

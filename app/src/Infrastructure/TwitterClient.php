@@ -4,8 +4,9 @@ namespace App\Infrastructure;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 use App\Domain\FetchInterface;
+use App\Domain\PostInterface;
 
-class TwitterClient implements FetchInterface
+class TwitterClient implements FetchInterface, PostInterface
 {
     private $connection;
 
@@ -29,6 +30,17 @@ class TwitterClient implements FetchInterface
 
         return $tweets;
     }
+
+    /**
+     * @param string $text
+     * @return bool
+     */
+    public function post(string $text) : bool
+    {
+        $this->connection->post("statuses/update", ["status" => $text]);
+        return $this->errorHandling();
+    }
+
 
     /**
      * @return bool
