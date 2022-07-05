@@ -32,3 +32,6 @@ In order to run tests just execute the following command.
 * ACCESS_TOKEN_SECRET: Twitter access token secret.
 * CONSUMER_KEY: Twitter API key.
 * CONSUMER_SECRET: Twitter API secret.
+
+##### abraham/twitteroauth
+https://twitteroauth.com/
