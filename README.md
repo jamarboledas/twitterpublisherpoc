@@ -10,6 +10,10 @@ In order to build the project just execute the following command.
 In order to run tests just execute the following command.
 `make tests`
 
+### Run infection
+In order to run tests just execute the following command.
+`make infection`
+
 ### Environment variables
 
 #### Symfony framework
